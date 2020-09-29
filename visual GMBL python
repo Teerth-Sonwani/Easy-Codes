@@ -1,0 +1,305 @@
+import pygame
+import time
+import random
+pygame.init()
+white = (255, 255, 255) 
+gree = (0, 255, 0)
+green1=(0,170,0)
+blue = (0, 0, 128)
+black=(0,0,0)
+grey=(0,100,0)
+dest=(185,0)
+money=5000
+wn=pygame.display.set_mode((500,500))
+lo=True
+while True:
+    PLAAY="no"
+    BAANK="no"
+    BUUY="no"
+    SEELL="no"
+    ko="no"
+    while lo:
+        mone=str(money)
+        for event in pygame.event.get() : 
+                if event.type == pygame.QUIT : 
+                    pygame.quit()  
+                    quit()
+        Rectplace = pygame.draw.rect(wn,white,(30, 80, 100, 40))
+        pos = pygame.mouse.get_pos()
+        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+        if Rectplace.collidepoint(pos) and pressed1:
+            print("PLAY")
+            PLAAY="yes"
+            lo=False
+        else:
+            PLAYY="no"
+        if Rectplace.collidepoint(pos):
+            green2=green1
+        else:
+            green2=gree
+        Rectplace1 = pygame.draw.rect(wn,white,(380, 80, 100, 40))
+        pos1 = pygame.mouse.get_pos()
+        pressed11, pressed2, pressed3 = pygame.mouse.get_pressed()
+        if Rectplace1.collidepoint(pos1) and pressed11:
+            print("BUY")
+            BUUY="yes"
+            lo=False
+        else:
+            BUUY="no"
+        if Rectplace1.collidepoint(pos1):
+            green3=green1
+        else:
+            green3=gree
+        Rectplace2 = pygame.draw.rect(wn,white,(30, 170, 100, 40))
+        pos11 = pygame.mouse.get_pos()
+        pressed111, pressed2, pressed3 = pygame.mouse.get_pressed()
+        if Rectplace2.collidepoint(pos11) and pressed111:
+            print("SELL")
+            SEELL="yes"
+            lo=False
+        else:
+            SEELL="no"
+        if Rectplace2.collidepoint(pos11):
+            green4=green1
+        else:
+            green4=gree
+        Rectplace3 = pygame.draw.rect(wn,white,(380, 170, 100, 40))
+        pos111 = pygame.mouse.get_pos()
+        pressed1111, pressed2, pressed3 = pygame.mouse.get_pressed()
+        if Rectplace3.collidepoint(pos111) and pressed1111:
+            print("BANK")
+            BAANK="yes"
+            lo=False
+        else:
+            BAANK="no"
+        if Rectplace3.collidepoint(pos111):
+            green5=green1
+        else:
+            green5=gree
+        fontfreesans=pygame.font.Font("freesansbold.ttf",30)
+        text = fontfreesans.render('GAMBLE', True, black)
+        texta = fontfreesans.render(mone, True, black)
+        text1 = fontfreesans.render('PLAY', True, black,green2)
+        text2 = fontfreesans.render('BUY', True, black,green3)
+        text3 = fontfreesans.render('SELL', True, black,green4)
+        text4 = fontfreesans.render('BANK', True, black,green5)
+        wn.fill(white)
+        wn.blit(text,dest)
+        wn.blit(texta,(1,1))
+        wn.blit(text1,(30,80))
+        wn.blit(text2,(380,80))
+        wn.blit(text3,(30,170))
+        wn.blit(text4,(380,170))
+        pygame.display.update()
+
+    if PLAAY=="yes":
+        while PLAAY:
+            if ko=="no":
+                for event in pygame.event.get() : 
+                        if event.type == pygame.QUIT : 
+                            pygame.quit()  
+                            quit()
+                wn.fill(white)
+                Rectplace6 = pygame.draw.rect(wn,gree,(1, 1, 40, 40))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace6.collidepoint(pos) and pressed1:
+                    lo=True
+                    global po
+                    po="o"
+                    break
+                Rectplace10 = pygame.draw.rect(wn,white,(30, 130, 180, 34))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace10.collidepoint(pos) and pressed1:
+                    ko="yes"
+                    continue
+                text14 = fontfreesans.render('<--', True, black)
+                text13 = fontfreesans.render('1)LOTTERY', True, black)
+                text15 = fontfreesans.render('PLAY', True, black)
+                wn.blit(text14,(1,1))
+                wn.blit(text13,(30,130))
+                wn.blit(text15,(200,1))
+                pygame.display.update()
+            elif ko=="yes":
+                for event in pygame.event.get() : 
+                        if event.type == pygame.QUIT : 
+                            pygame.quit()  
+                            quit()
+                
+                wn.fill(white)
+                Rectplace = pygame.draw.rect(wn,white,(30, 300, 20, 30))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace.collidepoint(pos) and pressed1:
+                    if money>=1:
+                        money=money-1
+                        go=random.randint(0,1)
+                        if go==0:
+                            money=money+2
+                        else:
+                            z=1
+                        time.sleep(0.5)
+                if Rectplace.collidepoint(pos):
+                    greenp=grey
+                else:
+                    greenp=black     
+                Rectplace = pygame.draw.rect(wn,white,(100, 300, 20, 30))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace.collidepoint(pos) and pressed1:
+                    if money>=5:
+                        money=money-5
+                        go=random.randint(0,5)
+                        if go==0:
+                            money=money+10
+                        else:
+                            z=1
+                        time.sleep(0.5)
+                if Rectplace.collidepoint(pos):
+                    greenpp=grey
+                else:
+                    greenpp=black  
+                Rectplace = pygame.draw.rect(wn,white,(180, 300, 40, 30))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace.collidepoint(pos) and pressed1:
+                    if money>=10:
+                        money=money-10
+                        go=random.randint(0,10)
+                        if go==0:
+                            money=money+20
+                        else:
+                            z=1
+                        time.sleep(0.5)
+                if Rectplace.collidepoint(pos):
+                    greenppp=grey
+                else:
+                    greenppp=black  
+                Rectplace = pygame.draw.rect(wn,white,(260, 300, 60, 30))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace.collidepoint(pos) and pressed1:
+                    if money>=100:
+                        money=money-100
+                        go=random.randint(0,100)
+                        if go==0:
+                            money=money+200
+                        else:
+                            z=1
+                        time.sleep(0.5)
+                if Rectplace.collidepoint(pos):
+                    greenpppp=grey
+                else:
+                    greenpppp=black  
+                Rectplace = pygame.draw.rect(wn,white,(370, 300, 80, 30))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace.collidepoint(pos) and pressed1:
+                    if money>=1000:
+                        money=money-1000
+                        go=random.randint(0,1000)
+                        if go==0:
+                            money=money+2000
+                        else:
+                            z=1
+                        time.sleep(0.5)
+                if Rectplace.collidepoint(pos):
+                    greenppppp=grey
+                else:
+                    greenppppp=black  
+                Rectplace6 = pygame.draw.rect(wn,gree,(1, 1, 40, 40))
+                pos = pygame.mouse.get_pos()
+                pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+                if Rectplace6.collidepoint(pos) and pressed1:
+                    lo=True
+                    po="o"
+                    break
+                text7 = fontfreesans.render('<--', True, black)
+                text8 = fontfreesans.render('WAGER', True, black)
+                text9 = fontfreesans.render('1', True,greenp)
+                text10 = fontfreesans.render('5', True,greenpp)
+                text11 = fontfreesans.render('10', True,greenppp)
+                text12 = fontfreesans.render('100', True,greenpppp)
+                text13 = fontfreesans.render('1000', True,greenppppp)
+                wn.blit(text7,(1,1))
+                wn.blit(text8,(180,80))
+                wn.blit(text9,(30,300))
+                wn.blit(text10,(100,300))
+                wn.blit(text11,(180,300))
+                wn.blit(text12,(260,300))
+                wn.blit(text13,(370,300))
+                pygame.display.update()
+        try:
+            if poo=="o":
+                continue
+        except:
+            z=1
+
+    elif BUUY=="yes":
+        while BUUY:
+            for event in pygame.event.get() : 
+                    if event.type == pygame.QUIT : 
+                        pygame.quit()  
+                        quit()
+            wn.fill(white)
+            Rectplace61 = pygame.draw.rect(wn,gree,(1, 1, 40, 40))
+            pos = pygame.mouse.get_pos()
+            pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+            if Rectplace61.collidepoint(pos) and pressed1:
+                lo=True
+                po="o"
+                break
+            text0 = fontfreesans.render('BUY', True, black)
+            wn.blit(text0,(200,1))
+            text7 = fontfreesans.render('<--', True, black)
+            wn.blit(text7,(1,1))
+            pygame.display.update()
+
+
+    elif SEELL=="yes":
+        while SEELL:
+            for event in pygame.event.get() : 
+                    if event.type == pygame.QUIT : 
+                        pygame.quit()  
+                        quit()
+            wn.fill(white)
+            Rectplace611 = pygame.draw.rect(wn,gree,(1, 1, 40, 40))
+            pos = pygame.mouse.get_pos()
+            pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+            if Rectplace611.collidepoint(pos) and pressed1:
+                lo=True
+                po="o"
+                break
+            text011 = fontfreesans.render('SELL', True, black)
+            wn.blit(text011,(200,1))
+            text7 = fontfreesans.render('<--', True, black)
+            wn.blit(text7,(1,1))
+            pygame.display.update()
+
+
+
+    elif BAANK=="yes":
+        while BAANK:
+            for event in pygame.event.get() : 
+                    if event.type == pygame.QUIT : 
+                        pygame.quit()  
+                        quit()
+            wn.fill(white)
+            Rectplace6111 = pygame.draw.rect(wn,gree,(1, 1, 40, 40))
+            pos = pygame.mouse.get_pos()
+            pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+            if Rectplace6111.collidepoint(pos) and pressed1:
+                lo=True
+                po="o"
+                break
+            text0111 = fontfreesans.render('BANK', True, black)
+            wn.blit(text0111,(200,1))
+            text7 = fontfreesans.render('<--', True, black)
+            wn.blit(text7,(1,1))
+            pygame.display.update()
+    try:
+        if po=="o":
+            continue
+    except:
+        z=1
